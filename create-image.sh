@@ -20,4 +20,5 @@ sudo systemd-nspawn --bind /usr/bin/qemu-aarch64-static -D rootfs /image-customi
 # "./flash.sh".
 # https://devtalk.nvidia.com/default/topic/760912/flashing-r19-3-mapping-system-img-to-loop-device-failed-/
 sudo losetup --find
+sudo ./apply_binaries.sh
 sudo ./flash.sh --no-flash jetson-tx2 mmcblk0p1
