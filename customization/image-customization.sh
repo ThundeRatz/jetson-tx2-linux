@@ -10,6 +10,7 @@ apt purge -y \
   firefox \
   'libreoffice-*' \
   lightdm \
+  manpages \
   'remmina*' \
   'rhythmbox*' \
   'thunderbird*' \
