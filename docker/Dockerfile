@@ -6,7 +6,7 @@ ENV LANG en_US.UTF-8
 ENV MAKEFLAGS -j4
 
 RUN apt-get update \
-    && apt-get install --no-install-recommends -y ca-certificates gcc git libc6-dev make wget \
+    && apt-get install --no-install-recommends -y bc ca-certificates gcc git libc6-dev make wget \
     && rm -rf /var/lib/apt/lists/*
 
 COPY ./default-cmd.sh /
