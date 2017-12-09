@@ -6,12 +6,11 @@ if ! cd Linux_for_Tegra ; then
     ./download-sources.sh
     cd Linux_for_Tegra
 fi
-# Download and unpack Ubuntu rootfs. sudo is required to create files owned by
-# root (we can use fakeroot in the tar and flash.sh commands, but working around
-# the systemd-nspawn container is complicated).
-if [ ! -d rootfs/var ] ; then
-    wget -qO- https://developer.nvidia.com/embedded/dlc/l4t-sample-root-filesystem-28-2 | sudo tar xj -C rootfs
-fi
+# "sudo tar" is required to create files owned by root (we can use fakeroot in the tar
+# and flash.sh commands, but working around the systemd-nspawn container is complicated).
+sudo rm -rf rootfs
+mkdir rootfs
+sudo tar xf ../rootfs.tbz2 -C rootfs
 
 cp ../customization/image-customization.sh rootfs
 sudo systemd-nspawn --bind /usr/bin/qemu-aarch64-static -D rootfs /image-customization.sh
